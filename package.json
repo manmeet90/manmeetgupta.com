@@ -1,0 +1,12 @@
+{
+  "name": "githubpagestest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Manmeet Gupta",
+  "license": "MIT",
+  "dependencies": {
+    "jsx-loader": "^0.13.2",
+    "react": "15.4.1",
+    "react-dom": "15.4.1"
+  }
+}
