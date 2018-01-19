@@ -5,10 +5,27 @@
     <title>Manmeet Gupta - Front end Engineer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="styles.css">
-    <link preload href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poiret+One" onload="this.rel='stylesheet'">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <main id="main"></main>
     <script src="bundle.js"></script>
+    <script>
+        function registerServiceWorker() {
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                    navigator.serviceWorker.register("sw.js").then(function (registration) {
+                        // Registration was successful 
+                        console.log(`ServiceWorker registration successful with scope: ${registration.scope} `);
+                    }, function (err) {
+                        // registration failed :(
+                        console.log(`ServiceWorker registration failed: ${err}`);
+                    });
+                });
+            }
+        }
+        registerServiceWorker();
+    </script>
 </body>
 </html>
