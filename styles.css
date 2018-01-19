@@ -1,0 +1,31 @@
+*{
+    margin : 0;
+    padding :0;
+    box-sizing: border-box;
+}
+html,body{
+    font-family: 'Poiret One', cursive;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+#about h1, h2{
+    /* color: #2196f3; */
+    text-align: center;
+}
+#about .manu_text{
+    color: #f44336;
+    background: -webkit-linear-gradient(#f33f06, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+main >div{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+main > div >section{
+    flex-grow: 1;
+}
+footer{
+    text-align: center;
+}
