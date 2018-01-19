@@ -13,10 +13,10 @@ html,body{
 }
 #about .manu_text{
     color: #f44336;
-    background: -webkit-linear-gradient(#f33f06, #fff);
+    /* background: -webkit-linear-gradient(#f33f06, #fff);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
 }
 main >div{
     display: flex;
