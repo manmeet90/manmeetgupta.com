@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html,body{
-    font-family: 'Poiret One', cursive;
+    font-family: 'Quicksand', sans-serif;
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 #about h1, h2{
