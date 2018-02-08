@@ -9541,8 +9541,8 @@ class App extends React.Component {
                         React.createElement("small", {hidden: this.state.wd != null && this.state.isSecured}, "Finding weather information..."), 
                         this.state.wd && weatherInfo
                     ), 
-                    React.createElement("div", {hidden: this.state.wd && this.state.wda == false}, "Your browser doesn't support Geolocation APIs"), 
-                    React.createElement("div", {hidden: !this.state.isSecured}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
+                    React.createElement("div", {hidden: !this.state.wd && this.state.wda == false}, "Your browser doesn't support Geolocation APIs"), 
+                    React.createElement("div", {hidden: !this.state.wd && !this.state.isSecured}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
                 ), 
                 React.createElement("footer", null, "© 2018 Manmeet Gupta")
             )
