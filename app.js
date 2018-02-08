@@ -71,7 +71,7 @@ class App extends React.Component {
     }
 
     fetchWeatherInfo(lat, long) {
-        return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=394b20d5a75352ac127eb2510d4d18bc&units=metric`)
+        return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=394b20d5a75352ac127eb2510d4d18bc&units=metric`)
         .then(response => response.json());
     }
 }
