@@ -5,7 +5,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             wda : false,
-            wd : null
+            wd : null,
+            isSecured : false
         };
     }
     render(){
@@ -38,7 +39,8 @@ class App extends React.Component {
                             weatherInfo
                         }
                     </div>
-                    <div hidden={this.state.wda == false}>Your browser doesn't support Geolocation API</div>
+                    <div hidden={this.state.wda == false && this.state.isSecured}>Your browser doesn't support Geolocation API</div>
+                    <div hidden={this.state.wda == false && !this.state.isSecured}>Visit to https://manmeetgupta.com/ to view weather information</div>
                 </section>
                 <footer>&copy; 2018 Manmeet Gupta</footer>
             </div>
@@ -52,21 +54,25 @@ class App extends React.Component {
     getCurrentLocationOfUser() {
         if ("geolocation" in navigator) {
             /* geolocation is available */
-            navigator.geolocation.getCurrentPosition(position => {
-                try{
-                    this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
-                    .then(weatherInfo => {
-                        console.log(weatherInfo);
-                        this.setState(Object.assign({}, this.state, { wd: weatherInfo }));
-                    }, (err)=>{
-                        console.log(err);
-                    });
-                }catch(ex){
-                    console.log(ex);
-                }
-            });
-        } else {
-            this.setState(Object.assign({}, this.state, {wda:false}));
+            if (location.protocol.indexOf("https") != -1) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    try {
+                        this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
+                            .then(weatherInfo => {
+                                console.log(weatherInfo);
+                                this.setState(Object.assign({}, this.state, { wd: weatherInfo }));
+                            }, (err) => {
+                                console.log(err);
+                            });
+                    } catch (ex) {
+                        console.log(ex);
+                    }
+                });
+            } else {
+                this.setState(Object.assign({}, this.state, { wda: false }));
+            }
+        }else {
+            this.setState(Object.assign({}, this.state, { wda: false }));
         }
     }
 
