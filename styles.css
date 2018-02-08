@@ -3,6 +3,9 @@
     padding :0;
     box-sizing: border-box;
 }
+.hide {
+    display : none;
+}
 html,body{
     font-family: 'Quicksand', sans-serif;
     /* background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); */
