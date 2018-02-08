@@ -9562,7 +9562,7 @@ class App extends React.Component {
                         this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
                             .then(weatherInfo => {
                                 console.log(weatherInfo);
-                                this.setState(Object.assign({}, this.state, { wd: weatherInfo, isSecured:true  }));
+                                this.setState(Object.assign({}, this.state, { wd: weatherInfo, isSecured:true, wda: true  }));
                             }, (err) => {
                                 console.log(err);
                             });
