@@ -9554,27 +9554,28 @@ class App extends React.Component {
     }
 
     getCurrentLocationOfUser() {
+        if (location.protocol.indexOf("https") != -1) {
+            this.setState(Object.assign({}, this.state, { isSecured: true }));
+        }else {
+            this.setState(Object.assign({}, this.state, { isSecured: false }));
+        }
         if ("geolocation" in navigator) {
             /* geolocation is available */
-            if (location.protocol.indexOf("https") != -1) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    try {
-                        this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
-                            .then(weatherInfo => {
-                                console.log(weatherInfo);
-                                this.setState(Object.assign({}, this.state, { wd: weatherInfo, isSecured:true, wda: true  }));
-                            }, (err) => {
-                                console.log(err);
-                            });
-                    } catch (ex) {
-                        console.log(ex);
-                    }
-                });
-            } else {
-                this.setState(Object.assign({}, this.state, { wda: false, isSecured: false}));
-            }
+            navigator.geolocation.getCurrentPosition(position => {
+                try {
+                    this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
+                        .then(weatherInfo => {
+                            console.log(weatherInfo);
+                            this.setState(Object.assign({}, this.state, { wd: weatherInfo, isSecured:true, wda: true  }));
+                        }, (err) => {
+                            console.log(err);
+                        });
+                } catch (ex) {
+                    console.log(ex);
+                }
+            });
         }else {
-            this.setState(Object.assign({}, this.state, { wda: false, isSecured: false }));
+            this.setState(Object.assign({}, this.state, { wda: false }));
         }
     }
 
