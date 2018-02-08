@@ -42,6 +42,9 @@ main>div>section#weather_widget {
     width: 30vw;
     flex-grow: initial;
 }
+main>div>section#weather_widget a{ 
+    color: #f7f7f7;
+}
 @media screen and (max-width:480px) {
     main>div>section#weather_widget {
         width:100vw;
