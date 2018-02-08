@@ -9504,16 +9504,78 @@ module.exports = getHostComponentFromComposite;
 const reactDOM = __webpack_require__(81) ;
 const React = __webpack_require__(178);
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            wda : false,
+            wd : null
+        };
+    }
     render(){
+        let weatherInfo = "";
+        if(this.state.wd) {
+            let styles = {
+                verticalAlign : 'middle'
+            };
+            let imgUrl = `http://openweathermap.org/img/w/${this.state.wd.weather[0].icon}.png`;
+            weatherInfo = (
+                React.createElement("div", null, 
+                    React.createElement("p", null, "Your Location : ", this.state.wd.name), 
+                    React.createElement("p", null, "Temperature : ", this.state.wd.main.temp, " ", React.createElement("sup", null, "0"), "C"), 
+                    React.createElement("p", null, "Humidity : ", this.state.wd.main.humidity, "%"), 
+                    "Weather Forcast : ", this.state.wd.weather[0].description, 
+                    React.createElement("img", {style: styles, src: imgUrl})
+                )
+            );
+        }
         return(
             React.createElement("div", null, 
                 React.createElement("section", {id: "about"}, 
                     React.createElement("h1", null, "Manmeet Gupta"), 
                     React.createElement("h2", null, "Frontend Engineer, ", React.createElement("span", {className: "manu_text"}, "Manchester United"), " Fan, Foodie :)")
                 ), 
+                React.createElement("section", {id: "weather_widget"}, 
+                    React.createElement("div", null, 
+                        React.createElement("small", {hidden: this.state.wd != null}, "Finding weather information..."), 
+                        this.state.wd &&
+                            weatherInfo
+                        
+                    ), 
+                    React.createElement("div", {hidden: this.state.wda == false}, "Your browser doesn't support Geolocation API")
+                ), 
                 React.createElement("footer", null, "© 2018 Manmeet Gupta")
             )
         );
+    }
+
+    componentDidMount() {
+        this.getCurrentLocationOfUser();
+    }
+
+    getCurrentLocationOfUser() {
+        if ("geolocation" in navigator) {
+            /* geolocation is available */
+            navigator.geolocation.getCurrentPosition(position => {
+                try{
+                    this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
+                    .then(weatherInfo => {
+                        console.log(weatherInfo);
+                        this.setState(Object.assign({}, this.state, { wd: weatherInfo }));
+                    }, (err)=>{
+                        console.log(err);
+                    });
+                }catch(ex){
+                    console.log(ex);
+                }
+            });
+        } else {
+            this.setState(Object.assign({}, this.state, {wda:false}));
+        }
+    }
+
+    fetchWeatherInfo(lat, long) {
+        return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=394b20d5a75352ac127eb2510d4d18bc&units=metric`)
+        .then(response => response.json());
     }
 }
 reactDOM.render(React.createElement(App, null), document.querySelector("#main"));

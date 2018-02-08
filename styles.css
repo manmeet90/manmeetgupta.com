@@ -5,7 +5,11 @@
 }
 html,body{
     font-family: 'Quicksand', sans-serif;
-    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    /* background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); */
+}
+body{
+    background-image: url('images/bg_big.jpeg');
+    background-repeat: no-repeat;
 }
 #about h1, h2{
     /* color: #2196f3; */
@@ -25,7 +29,18 @@ main >div{
 }
 main > div >section{
     flex-grow: 1;
+    /* align-self: center; */
+    /* width: 30vw; */
+    color: #f7f7f7;
+    padding-top: 25px;
+}
+main>div>section#weather_widget {
+    background-image: linear-gradient(to top, #2196f399 0%, #9c27b03d 100%);
+    width: 30vw;
+    flex-grow: initial;
 }
 footer{
     text-align: center;
+    color: #f7f7f7;
+    font-size: 70%;
 }
