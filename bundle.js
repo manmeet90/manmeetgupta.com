@@ -9538,7 +9538,7 @@ class App extends React.Component {
                 ), 
                 React.createElement("section", {id: "weather_widget"}, 
                     React.createElement("div", null, 
-                        React.createElement("small", {className: this.state.wd != null && this.state.isSecured ? 'hide': ''}, "Finding weather information..."), 
+                        React.createElement("small", {className: this.state.wd != null || !this.state.isSecured ? 'hide': ''}, "Finding weather information..."), 
                         this.state.wd && weatherInfo
                     ), 
                     React.createElement("div", {className: this.state.isSecured ? 'hide' : ''}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
