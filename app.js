@@ -34,7 +34,7 @@ class App extends React.Component {
                 </section>
                 <section id="weather_widget">
                     <div>
-                        <small hidden={this.state.wd != null}>Finding weather information...</small>
+                        <small hidden={this.state.wd != null && this.state.isSecured}>Finding weather information...</small>
                         {this.state.wd &&
                             weatherInfo
                         }

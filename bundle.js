@@ -9537,7 +9537,7 @@ class App extends React.Component {
                 ), 
                 React.createElement("section", {id: "weather_widget"}, 
                     React.createElement("div", null, 
-                        React.createElement("small", {hidden: this.state.wd != null}, "Finding weather information..."), 
+                        React.createElement("small", {hidden: this.state.wd != null && this.state.isSecured}, "Finding weather information..."), 
                         this.state.wd &&
                             weatherInfo
                         
