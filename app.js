@@ -40,7 +40,7 @@ class App extends React.Component {
                         }
                     </div>
                     <div hidden={this.state.wda == false && this.state.isSecured}>Your browser doesn't support Geolocation API</div>
-                    <div hidden={this.state.wda == false && !this.state.isSecured}>Visit to https://manmeetgupta.com/ to view weather information</div>
+                    <div hidden={this.state.wda == false && !this.state.isSecured}>Visit to <a href="https://manmeetgupta.com/">https version of site</a> to view weather information</div>
                 </section>
                 <footer>&copy; 2018 Manmeet Gupta</footer>
             </div>

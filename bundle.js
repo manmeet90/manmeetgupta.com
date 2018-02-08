@@ -9543,7 +9543,7 @@ class App extends React.Component {
                         
                     ), 
                     React.createElement("div", {hidden: this.state.wda == false && this.state.isSecured}, "Your browser doesn't support Geolocation API"), 
-                    React.createElement("div", {hidden: this.state.wda == false && !this.state.isSecured}, "Visit to https://manmeetgupta.com/ to view weather information")
+                    React.createElement("div", {hidden: this.state.wda == false && !this.state.isSecured}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
                 ), 
                 React.createElement("footer", null, "© 2018 Manmeet Gupta")
             )
