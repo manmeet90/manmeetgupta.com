@@ -36,7 +36,7 @@ class App extends React.Component {
                 <section id="weather_widget">
                     <div>
                         <small hidden={this.state.wd != null && this.state.isSecured}>Finding weather information...</small>
-                        {this.state.wd && weatherInfo}
+                        {this.state.wd !=null && weatherInfo}
                     </div>
                     <div hidden={!this.state.wd && this.state.wda == false}>Your browser doesn't support Geolocation APIs</div>
                     <div hidden={!this.state.isSecured}>Visit to <a href="https://manmeetgupta.com/">https version of site</a> to view weather information</div>
