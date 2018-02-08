@@ -9519,7 +9519,7 @@ class App extends React.Component {
             let styles = {
                 verticalAlign : 'middle'
             };
-            let imgUrl = `http://openweathermap.org/img/w/${this.state.wd.weather[0].icon}.png`;
+            let imgUrl = `https://openweathermap.org/img/w/${this.state.wd.weather[0].icon}.png`;
             weatherInfo = (
                 React.createElement("div", null, 
                     React.createElement("p", null, "Your Location : ", this.state.wd.name), 
@@ -9538,11 +9538,11 @@ class App extends React.Component {
                 ), 
                 React.createElement("section", {id: "weather_widget"}, 
                     React.createElement("div", null, 
-                        React.createElement("small", {className: this.state.wd != null && this.state.isSecured ? 'hide': ''}, "Finding weather information..."), 
+                        React.createElement("small", {className: "{this.state.wd != null && this.state.isSecured ? 'hide': ''}"}, "Finding weather information..."), 
                         this.state.wd && weatherInfo
                     ), 
-                    React.createElement("div", {className: !this.state.wd && this.state.wda == false? 'hide': ''}, "Your browser doesn't support Geolocation APIs"), 
-                    React.createElement("div", {className: !this.state.wd && !this.state.isSecured ? 'hide' : ''}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
+                    React.createElement("div", {className: "{!this.state.wd && this.state.wda == false? 'hide': ''}"}, "Your browser doesn't support Geolocation APIs"), 
+                    React.createElement("div", {className: "{!this.state.wd && !this.state.isSecured ? 'hide' : ''}"}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
                 ), 
                 React.createElement("footer", null, "© 2018 Manmeet Gupta")
             )
