@@ -10,6 +10,7 @@ class App extends React.Component {
         };
     }
     render(){
+        console.log(this.state);
         let weatherInfo = "";
         if(this.state.wd) {
             let styles = {
@@ -35,12 +36,10 @@ class App extends React.Component {
                 <section id="weather_widget">
                     <div>
                         <small hidden={this.state.wd != null && this.state.isSecured}>Finding weather information...</small>
-                        {this.state.wd &&
-                            weatherInfo
-                        }
+                        {this.state.wd && weatherInfo}
                     </div>
-                    <div hidden={this.state.wda == false && this.state.isSecured}>Your browser doesn't support Geolocation API</div>
-                    <div hidden={this.state.wda == false && !this.state.isSecured}>Visit to <a href="https://manmeetgupta.com/">https version of site</a> to view weather information</div>
+                    <div hidden={!this.state.wd && this.state.wda == false}>Your browser doesn't support Geolocation APIs</div>
+                    <div hidden={!this.state.isSecured}>Visit to <a href="https://manmeetgupta.com/">https version of site</a> to view weather information</div>
                 </section>
                 <footer>&copy; 2018 Manmeet Gupta</footer>
             </div>
@@ -60,7 +59,7 @@ class App extends React.Component {
                         this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
                             .then(weatherInfo => {
                                 console.log(weatherInfo);
-                                this.setState(Object.assign({}, this.state, { wd: weatherInfo }));
+                                this.setState(Object.assign({}, this.state, { wd: weatherInfo, isSecured:true  }));
                             }, (err) => {
                                 console.log(err);
                             });
@@ -69,10 +68,10 @@ class App extends React.Component {
                     }
                 });
             } else {
-                this.setState(Object.assign({}, this.state, { wda: false }));
+                this.setState(Object.assign({}, this.state, { wda: false, isSecured: false}));
             }
         }else {
-            this.setState(Object.assign({}, this.state, { wda: false }));
+            this.setState(Object.assign({}, this.state, { wda: false, isSecured: false }));
         }
     }
 

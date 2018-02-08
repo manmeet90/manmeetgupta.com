@@ -9513,6 +9513,7 @@ class App extends React.Component {
         };
     }
     render(){
+        console.log(this.state);
         let weatherInfo = "";
         if(this.state.wd) {
             let styles = {
@@ -9538,12 +9539,10 @@ class App extends React.Component {
                 React.createElement("section", {id: "weather_widget"}, 
                     React.createElement("div", null, 
                         React.createElement("small", {hidden: this.state.wd != null && this.state.isSecured}, "Finding weather information..."), 
-                        this.state.wd &&
-                            weatherInfo
-                        
+                        this.state.wd && weatherInfo
                     ), 
-                    React.createElement("div", {hidden: this.state.wda == false && this.state.isSecured}, "Your browser doesn't support Geolocation API"), 
-                    React.createElement("div", {hidden: this.state.wda == false && !this.state.isSecured}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
+                    React.createElement("div", {hidden: !this.state.wd && this.state.wda == false}, "Your browser doesn't support Geolocation APIs"), 
+                    React.createElement("div", {hidden: !this.state.isSecured}, "Visit to ", React.createElement("a", {href: "https://manmeetgupta.com/"}, "https version of site"), " to view weather information")
                 ), 
                 React.createElement("footer", null, "© 2018 Manmeet Gupta")
             )
@@ -9563,7 +9562,7 @@ class App extends React.Component {
                         this.fetchWeatherInfo(position.coords.latitude, position.coords.longitude)
                             .then(weatherInfo => {
                                 console.log(weatherInfo);
-                                this.setState(Object.assign({}, this.state, { wd: weatherInfo }));
+                                this.setState(Object.assign({}, this.state, { wd: weatherInfo, isSecured:true  }));
                             }, (err) => {
                                 console.log(err);
                             });
@@ -9572,10 +9571,10 @@ class App extends React.Component {
                     }
                 });
             } else {
-                this.setState(Object.assign({}, this.state, { wda: false }));
+                this.setState(Object.assign({}, this.state, { wda: false, isSecured: false}));
             }
         }else {
-            this.setState(Object.assign({}, this.state, { wda: false }));
+            this.setState(Object.assign({}, this.state, { wda: false, isSecured: false }));
         }
     }
 
