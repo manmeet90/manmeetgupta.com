@@ -181,5 +181,22 @@ if($().circleProgress){
 		 });
 	});
 
+	$('#download_cv_btn').on('click', function(e){
+		e.preventDefault();
+		let storageRef = firebase.storage();
+		storageRef.ref('ManmeetKumarGupta.docx').getDownloadURL().then(function(url) {
+			let elem = document.createElement('a');
+			elem.setAttribute('display', 'none');
+			elem.setAttribute('href', url);
+			elem.setAttribute('download', 'ManmeetKumarGupta.docx');
+			// fix for firefox browser, as firefox don't entertain click on elements not attached to DOM.
+			document.querySelector('body').appendChild(elem);
+			elem.click();
+			elem.remove();
+		}).catch((error) => {
+			console.log(error);
+		});
+	});
+
 })(jQuery);
 
