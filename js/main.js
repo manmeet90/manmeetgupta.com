@@ -147,6 +147,39 @@ if($().circleProgress){
 		emptyFill: "rgba(0, 0, 0, 0)"
 	});
 }
+	function clearForm(){
+		$('.contact-form #from_name').val("");
+		$('.contact-form #from_email').val("");
+		$('.contact-form #subject').val("");
+		$('.contact-form #message').val("");
+	}
+
+	$('#sendEmailBtn').on('click', function(e) {
+		e.preventDefault();
+		let from_name = $('.contact-form #from_name').val();
+		let from_email = $('.contact-form #from_email').val();
+		let subject = $('.contact-form #subject').val();
+		let message = $('.contact-form #message').val();
+
+		var template_params = {
+			"reply_to": from_email,
+			"subject": subject,
+			"to_name": "Manmeet",
+			"from_name": from_name,
+			"message_html": message
+		 };
+		 
+		 var service_id = "default_service";
+		 var template_id = "template_Y0JdgjFE";
+		 emailjs.send(service_id,template_id,template_params)
+		 .then(function(response) {
+			console.log('SUCCESS!', response.status, response.text);
+			toastr.success('Message sent successfully.');
+			clearForm();
+		 }, function(error) {
+			console.log('FAILED...', error);
+		 });
+	});
 
 })(jQuery);
 

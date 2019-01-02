@@ -20,12 +20,18 @@
 	<link rel="stylesheet" href="css/magnific-popup.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
+	<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+	<script type="text/javascript">
+	(function(){
+		emailjs.init("user_gac0ittr2YdIACUAbzVSl");
+	})();
+	</script>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -366,18 +372,18 @@
 						<form class="contact-form">
 							<div class="row">
 								<div class="col-md-6">
-									<input type="text" placeholder="Name">
+									<input id="from_name" type="text" placeholder="Name">
 								</div>
 								<div class="col-md-6">
-									<input type="text" placeholder="E-mail">
+									<input id="from_email" type="text" placeholder="E-mail">
 								</div>
 								<div class="col-md-12">
-									<input type="text" placeholder="Subject">
-									<textarea placeholder="Message"></textarea>
+									<input id="subject" type="text" placeholder="Subject">
+									<textarea id="message" placeholder="Message"></textarea>
 								</div>
 							</div>
 							<div class="text-md-right">
-								<button class="site-btn">Send message</button>
+								<button id="sendEmailBtn" class="site-btn">Send message</button>
 							</div>
 						</form>
 					</div>
@@ -405,6 +411,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/magnific-popup.min.js"></script>
 	<script src="js/circle-progress.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>
