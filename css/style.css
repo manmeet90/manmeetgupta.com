@@ -710,7 +710,7 @@ ol {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
-	background-color: #009fff;
+	background-color: #15c3b3b8;
 }
 
 .home-two-style .header-section,
@@ -787,7 +787,7 @@ ol {
 }
 
 .home-two-style .footer-section {
-	background: #3a4db4;
+	background: rgba(109,117,141,0.2);
 }
 
 .home-two-style .contact-form ::-webkit-input-placeholder {
